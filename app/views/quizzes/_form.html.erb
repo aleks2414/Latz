@@ -24,10 +24,24 @@
     <%= f.check_box :is_zip %>
   </div>
 
+<div class="links">
+  <%= link_to_add_association 'add questions', f, :questions, class: "add-colour-link" %>
+</div>
+
 <%= f.fields_for :questions do |builder| %>
+
   <%= render 'question_fields', f: builder %>
 <% end %>
+
+
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+
+<script>
+
+
+
+</script>
