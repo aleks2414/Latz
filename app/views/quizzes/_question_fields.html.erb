@@ -1,6 +1,5 @@
 <fieldset>
 
-
 <div class="nested-fields">
 
   <div class="field">
@@ -27,21 +26,17 @@
     <%= f.label :correct %><br>
     <%= f.number_field :correct_option %>
   </div>
-<%= link_to_remove_association "Remove file", f %>
+<%= link_to_remove_association "Remove Question", f %>
 
 </div>
 
-
+<div id="answers">
 <div class="links">
-  <%= link_to_add_association 'add answers', f, :answers, class: "add-colour-link" %>
-</div>
-
-
-
-
-
   <%= f.fields_for :answers do |builder| %>
     <%= render 'answer_fields', f: builder %>
   <% end %>
+  <%= link_to_add_association 'add answers', f, :answers %>
+</div>
+</div>
 
 </fieldset>

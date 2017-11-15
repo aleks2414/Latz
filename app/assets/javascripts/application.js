@@ -13,7 +13,9 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require cocoon
+//= require cocoon_limiter
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
 
+ $('#questions').cocoon_limiter();

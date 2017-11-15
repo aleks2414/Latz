@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
@@ -24,14 +25,15 @@
     <%= f.check_box :is_zip %>
   </div>
 
+<div id="questions">
 <div class="links">
-  <%= link_to_add_association 'add questions', f, :questions, class: "add-colour-link" %>
-</div>
-
 <%= f.fields_for :questions do |builder| %>
-
   <%= render 'question_fields', f: builder %>
 <% end %>
+  <%= link_to_add_association 'add questions', f, :questions %>
+</div>
+</div>
+
 
 
   <div class="actions">
@@ -40,8 +42,3 @@
 <% end %>
 
 
-<script>
-
-
-
-</script>
