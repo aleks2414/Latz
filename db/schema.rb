@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171114182251) do
+ActiveRecord::Schema.define(version: 20171115170058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,6 +108,18 @@ ActiveRecord::Schema.define(version: 20171114182251) do
     t.datetime "updated_at"
   end
 
+  create_table "tests", force: :cascade do |t|
+    t.integer  "quiz_id"
+    t.string   "name"
+    t.string   "email"
+    t.string   "city"
+    t.string   "zip_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "tests", ["quiz_id"], name: "index_tests_on_quiz_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -134,4 +146,5 @@ ActiveRecord::Schema.define(version: 20171114182251) do
   add_foreign_key "questions", "quizzes"
   add_foreign_key "questions", "users"
   add_foreign_key "quizzes", "users"
+  add_foreign_key "tests", "quizzes"
 end

@@ -11,6 +11,7 @@ class QuizzesController < ApplicationController
   # GET /quizzes/1
   # GET /quizzes/1.json
   def show
+    @test = Test.new
   end
 
   # GET /quizzes/new

@@ -1,5 +1,29 @@
 <h1><%= @quiz.name %></h1>
 
+
+<%= form_for([@quiz, @test]) do |f| %>
+	  
+	  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+
+	  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+
+	  <div class="field">
+    <%= f.label :city %><br>
+    <%= f.text_field :city %>
+  </div>
+
+	  <div class="field">
+    <%= f.label :zip_code %><br>
+    <%= f.text_field :zip_code %>
+  </div>
+
+
 <ol class="questions">
 <% @quiz.questions.each do |question| %>
   <li>
@@ -15,6 +39,11 @@
 <% end %>
 </ol>
 
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
 
 <%= link_to 'Edit', edit_quiz_path(@quiz) %> |
 <%= link_to 'Back', quizzes_path %>
