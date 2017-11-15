@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :anwsers
+  resources :answers
   resources :questions
   resources :quizzes
   devise_for :users

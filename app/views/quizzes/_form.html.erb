@@ -24,6 +24,9 @@
     <%= f.check_box :is_zip %>
   </div>
 
+<%= f.fields_for :questions do |builder| %>
+  <%= render 'question_fields', f: builder %>
+<% end %>
   <div class="actions">
     <%= f.submit %>
   </div>

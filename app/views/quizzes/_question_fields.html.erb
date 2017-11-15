@@ -1,0 +1,37 @@
+<fieldset>
+
+------------------------------------------
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :explanation %><br>
+    <%= f.text_field :explanation %>
+  </div>
+
+   <div class="field">
+    <%= f.label :reading %><br>
+    <%= f.text_field :reading %>
+  </div>
+
+   <div class="field">
+    <%= f.label :link %><br>
+    <%= f.text_field :link %>
+  </div>
+
+   <div class="field">
+    <%= f.label :correct %><br>
+    <%= f.number_field :correct_option %>
+  </div>
+
+------------------------------------------
+
+
+  <%= f.fields_for :answers do |builder| %>
+    <%= render 'answer_fields', f: builder %>
+  <% end %>
+
+</fieldset>
