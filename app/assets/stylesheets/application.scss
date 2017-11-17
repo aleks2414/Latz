@@ -105,6 +105,23 @@ input[type="url"],input[type="date"],input[type="name"], input[type="email"], in
 }
 
 
+.button_white {
+  color: $red !important;
+  background-color: white;
+  border: solid 1.2px white;
+  &:hover {
+    color: white !important;
+    background-color: $red;
+  }
+
+  &:hover > a {
+  color: $red;
+  background-color: white;
+  }
+
+}
+
+
 .fa_nice {
 	span {
 	color: #343434 !important;
@@ -225,4 +242,15 @@ section label:after {
 
 #q1 {
 	text-align: center;
+}
+
+#my_search {
+  label {
+    cursor:pointer;
+  }
+  input:checked ~ label {
+   background-color: #067892;
+   border-color: #067892;
+   color: white;
+ }
 }

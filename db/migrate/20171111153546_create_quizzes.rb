@@ -3,7 +3,7 @@ class CreateQuizzes < ActiveRecord::Migration
     create_table :quizzes do |t|
       t.string :name
       t.integer :number_of_questions
-      t.boolean :is_zip
+      t.boolean :is_zip, default: false
       t.references :user, index: true, foreign_key: true
 
       t.timestamps null: false

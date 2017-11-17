@@ -20,10 +20,13 @@
     <%#= f.label :number_of_questions %><br>
     <%#= f.number_field :number_of_questions %>
   </div> -->
+
+<div id="my_search">
   <div class="field">
-    <%= f.label :is_zip %><br>
-    <%= f.check_box :is_zip %>
+  <span> <%= f.check_box :is_zip, {:class => "hidden", :id => "ZipP"}, "Zip Needed", false %>
+  <label for="ZipP" class="button button_white">Zip Needed</label></span>
   </div>
+</div>
 </div>
 
 <div id="questions">
