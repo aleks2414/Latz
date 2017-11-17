@@ -1,34 +1,42 @@
-<fieldset>
-
 <div class="nested-fields">
+<div id="jaro">
+
+<%= link_to_remove_association f, class: "fa_nice" do%>
+<span class="fa fa-times"></span>
+<% end %>
+
+<div id="q1">
+<section><%= f.label :Question, class:'info col-form-label'%></section>
+</div>
 
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, required: true %>
   </div>
 
   <div class="field">
     <%= f.label :explanation %><br>
-    <%= f.text_field :explanation %>
+    <%= f.text_field :explanation, required: true %>
   </div>
 
+<div class="row">
+
+  <div class="col-md-6">
    <div class="field">
     <%= f.label :reading %><br>
-    <%= f.text_field :reading %>
+    <%= f.text_field :reading, required: true %>
+    </div>
   </div>
 
+
+<div class="col-md-6">
    <div class="field">
     <%= f.label :link %><br>
-    <%= f.text_field :link %>
+    <%= f.url_field :link, required: true %>
+    </div>
   </div>
-
-   <div class="field">
-    <%= f.label :correct %><br>
-    <%= f.number_field :correct_option %>
-  </div>
-<%= link_to_remove_association "Remove Question", f %>
-
 </div>
+
 
 <div id="answers">
 <div class="links">
@@ -39,4 +47,9 @@
 </div>
 </div>
 
-</fieldset>
+   <div class="field">
+    <%= f.label :correct_answer %><br>
+    <%= f.number_field :correct_option %>
+  </div>
+</div>
+</div>

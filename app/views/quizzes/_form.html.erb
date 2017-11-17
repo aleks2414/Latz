@@ -11,34 +11,39 @@
     </div>
   <% end %>
 
-
+<div id="jaro">
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.label :Quiz_name %><br>
+    <%= f.text_field :name, required: true %>
   </div>
-  <div class="field">
-    <%= f.label :number_of_questions %><br>
-    <%= f.number_field :number_of_questions %>
-  </div>
+<!--   <div class="field">
+    <%#= f.label :number_of_questions %><br>
+    <%#= f.number_field :number_of_questions %>
+  </div> -->
   <div class="field">
     <%= f.label :is_zip %><br>
     <%= f.check_box :is_zip %>
   </div>
+</div>
 
 <div id="questions">
 <div class="links">
 <%= f.fields_for :questions do |builder| %>
   <%= render 'question_fields', f: builder %>
 <% end %>
-  <%= link_to_add_association 'add questions', f, :questions %>
+  <%= link_to_add_association f, :questions, class: "fa_add" do %>
+    <span class="fa fa-plus-circle"></span>
+  <% end %>
 </div>
 </div>
 
 
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "button button_red" %>
+    <%= link_to "Cancel", root_path, class: "button button_red" %>
   </div>
+  <br>
 <% end %>
 
 

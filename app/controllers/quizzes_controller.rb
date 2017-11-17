@@ -1,6 +1,6 @@
 class QuizzesController < ApplicationController
   before_action :set_quiz, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show]
 
   # GET /quizzes
   # GET /quizzes.json
@@ -12,6 +12,7 @@ class QuizzesController < ApplicationController
   # GET /quizzes/1.json
   def show
     @test = Test.new
+    1.times {@test.test_answers.build}
   end
 
   # GET /quizzes/new

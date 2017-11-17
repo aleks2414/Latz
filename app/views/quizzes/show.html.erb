@@ -5,45 +5,75 @@
 	  
 	  <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, required: true %>
   </div>
 
-	  <div class="field">
+<div class="row">
+	  
+    <div class="col-md-4">
+    <div class="field">
     <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, required: true %>
+  </div>
   </div>
 
-	  <div class="field">
+	  
+    <div class="col-md-4">
+    <div class="field">
     <%= f.label :city %><br>
-    <%= f.text_field :city %>
+    <%= f.text_field :city, required: true %>
+  </div>
   </div>
 
-	  <div class="field">
+	<% if @quiz.is_zip == true %>
+    <div class="col-md-4">
+    <div class="field">
     <%= f.label :zip_code %><br>
     <%= f.text_field :zip_code %>
   </div>
+  </div>
+  <% end %>
+</div>
+
+<hr>
 
 
-<ol class="questions">
-<% @quiz.questions.each do |question| %>
-  <li>
-    <%= question.title %>
-    <%= question.explanation %>
+<div class="questions">
+<% @quiz.questions.each_with_index do |question, i| %>
 
-    <ol class="answers">
-      <% question.answers.each do |answer| %>
-        <li><%= answer.content %></li>
+
+
+<div id="jaro2">
+    <h3><%= i+1 %>.- <%= question.title %></h3>
+
+    <div class="answers">
+      <div class="row">
+      <% question.answers.each_with_index do |answer, i| %>
+      <div class="col-md-6">
+        <div id="magic">
+        <h4><%= i+1 %></h4>
+        <p> <%= answer.content %></p>
+        </div>
+      </div>
       <% end %>
-    </ol>
-  </li>
+      </div>
+    </div>
+<%= f.fields_for :test_answers do |builder| %>
+  <%= render 'test_answer_fields', f: builder %>
 <% end %>
-</ol>
+</div>
+  
+<% end %>
+</div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "button button_red" %>
   </div>
 
 <% end %>
 
+
+<% if current_user %>
 <%= link_to 'Edit', edit_quiz_path(@quiz) %> |
 <%= link_to 'Back', quizzes_path %>
+<% end %>
