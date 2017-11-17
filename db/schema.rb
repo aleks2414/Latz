@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171115174554) do
+ActiveRecord::Schema.define(version: 20171117161456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,19 @@ ActiveRecord::Schema.define(version: 20171115174554) do
   add_index "anwsers", ["question_id"], name: "index_anwsers_on_question_id", using: :btree
   add_index "anwsers", ["user_id"], name: "index_anwsers_on_user_id", using: :btree
 
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
   create_table "questions", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "quiz_id"
@@ -60,8 +73,10 @@ ActiveRecord::Schema.define(version: 20171115174554) do
     t.integer  "user_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.string   "slug"
   end
 
+  add_index "quizzes", ["slug"], name: "index_quizzes_on_slug", unique: true, using: :btree
   add_index "quizzes", ["user_id"], name: "index_quizzes_on_user_id", using: :btree
 
   create_table "rapidfire_answers", force: :cascade do |t|

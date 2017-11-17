@@ -125,6 +125,16 @@ input[type="url"],input[type="date"],input[type="name"], input[type="email"], in
 }
 }
 
+.fa_new {
+	span, h1 {
+	color: #0e3549 !important;
+	font-size: 20px !important;
+&:hover {
+	color: white !important;
+}
+}
+}
+
 
 .button_block {
   display: block;
