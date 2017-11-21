@@ -1,44 +1,96 @@
-<h1><%= @quiz.name %></h1>
-<%= @test.name %>
-
-<ol class="questions">
-<% @quiz.questions.each do |question| %>
-  <li>
-    <%= question.title %>
-    <%= question.explanation %>
-     <%= question.correct_option %>
-
-    <ol class="answers">
-      <% question.answers.each do |answer| %>
-        <li><%= answer.content %></li>
-      <% end %>
-    </ol>
-  </li>
-<% end %>
-
-<br>
-
-
-<%= @test.name %>
-<%= @test.email %>
-<%= @test.city %>
-
-<% @test.test_answers.each do |answer| %>
-
- <%= answer.option %>
-
-<% end %>
-
-</ol>
-<%= @a = @quiz.questions.count %>
+<% @a = @quiz.questions.count %>
 <% @b = 0 %>
+
+<div class="col-sm-8 col-md-offset-2">
+
+<div id="formario">
+
+<h1><%= @quiz.name %></h1>
+  <h5> <%= @test.name %> </h5>
+  <h5> <%= @test.email %></h5>
+  <h5><%= @test.city %></h5>
+</div>
+
+
+
+<div class="questions">
+<% @quiz.questions.each_with_index do |question, w| %>
+  <div id="formario">
+    <h4><%= question.title %></h4>
+    <div class="row">
+      <div class="col-sm-1 col-xs-3">
+        <div id="magic2">
+          <h1><%= w+1 %></h1>
+        </div>
+      </div>
+
+      <div class="col-sm-4 col-xs-3">
+        <div id="magic2">
+          <h5><%= question.answers[question.correct_option.to_i-1].try(:content) %></h5>
+        </div>
+      </div>
+
+      <div class="col-sm-4 col-xs-3">
+        <div id="magic2">
+          <h5><%= question.explanation %></h5>
+        </div>
+      </div>
+
+      <div class="col-sm-3 col-xs-3">
+        <a href="<%= question.link %>">
+          <div id="magic2">
+            <h5><%= question.reading %></h5>
+          </div>    
+        </a>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+</div>
+
+
+
+<div id="formario">
+
 <% @quiz.questions.each_with_index do |a, i| %>
 <% @c = @quiz.questions[i].try(:correct_option) == @test.test_answers[i].try(:option) %>
 <% if @c == true %>
-	<% @b = @b +1 %>
+  <% @b = @b +1 %>
 <% end %>
 <% end %>
 
+<div class="row">
+  <div class="col-sm-6">
+    <div id="magic2">
+      <h5><%= @b %> Correct Answers</h5>
+    </div>
+  </div>
+    <div class="col-sm-6">
+    <div id="magic2">
+      <h5><%= @a - @b %> Wrong Answers</h5>
+    </div>
+    </div>
+  </div>
 
-<%= @b %> respuestas correctas
+  <div class="row">
+    <div class="col-sm-12">
+      <div id="magic2">
+        <h5><%= ((@b / @a.to_f)*100).round(2) %> % of Success</h5>
+      </div>
+    </div>
+  </div>
+</div>
 
+</div>
+
+<% @test.test_answers.each do |answer| %>
+  <%= answer.option %>
+<% end %>
+
+
+
+
+
+</div>
