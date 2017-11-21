@@ -70,7 +70,7 @@ class TestsController < ApplicationController
     end
 
     def set_quiz
-      @quiz = Quiz.find(params[:quiz_id])
+      @quiz = Quiz.friendly.find(params[:quiz_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

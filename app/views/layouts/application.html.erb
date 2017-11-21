@@ -19,10 +19,9 @@
 <% end %>
 
 
-<div class="col-md-8 col-md-offset-2">
-  <div id="formario">
 
 <div id="links">
+	<div class="container">
 	<ul>
 		<% if user_signed_in? %>
   <li>
@@ -36,13 +35,14 @@
 	<li><a href="<%= new_user_registration_path %>"> Sign up </a></li>
 		<% end %>
 	</ul>
+	</div>
 </div>
 
-
+<div id="content">
 <%= yield %>
+</div>
 
-</div>
-</div>
+
 
 	<script>
 $(document).ready(function(){
