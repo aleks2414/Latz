@@ -79,10 +79,18 @@
 
   <div class="actions">
     <%= f.submit class: "button button_red button_block" %>
-  </div>  
+  </div>
+  
 
     </div>
   </div>
 </div>
 
 <% end %>
+
+<script>
+
+$('div').on('click',function(){
+    $(this).css('color','red').siblings('').css('color','black');
+});
+</script>

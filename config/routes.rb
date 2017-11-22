@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
 
-  
-  resources :test_answers
-  resources :answers
-  resources :questions
+
   resources :quizzes do
     resources :tests
+    resources :test_answers
   end
+  
+  
+  resources :answers
+  resources :questions
+  
+
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

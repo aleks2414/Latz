@@ -41,6 +41,7 @@
 <div id="answers">
 <div class="links">
   <%= f.fields_for :answers do |builder| %>
+  
     <%= render 'answer_fields', f: builder %>
   <% end %>
   <%= link_to_add_association f, :answers, class: "fa_new" do %>

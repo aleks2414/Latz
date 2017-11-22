@@ -1,6 +1,7 @@
 class TestsController < ApplicationController
-  before_action :set_test, only: [:show, :edit, :update, :destroy]
   before_action :set_quiz
+  before_action :set_test, only: [:show, :edit, :update, :destroy]
+
 
   # GET /tests
   # GET /tests.json
@@ -25,7 +26,7 @@ class TestsController < ApplicationController
   # POST /tests
   # POST /tests.json
   def create
-    @test = Test.new(test_params)
+    @test = @quiz.tests.new(test_params)
     @test.quiz_id = @quiz.id
 
     respond_to do |format|
@@ -66,11 +67,11 @@ class TestsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_test
-      @test = Test.find(params[:id])
+      @test = @quiz.tests.find(params[:id])
     end
 
     def set_quiz
-      @quiz = Quiz.friendly.find(params[:quiz_id])
+      @quiz = Quiz.find(params[:quiz_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

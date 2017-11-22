@@ -11,7 +11,7 @@ class QuizzesController < ApplicationController
   # GET /quizzes/1
   # GET /quizzes/1.json
   def show
-    @test = Test.new
+    @test = @quiz.tests.new
     1.times {@test.test_answers.build}
   end
 
@@ -68,7 +68,7 @@ class QuizzesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_quiz
-      @quiz = Quiz.friendly.find(params[:id])
+      @quiz = Quiz.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

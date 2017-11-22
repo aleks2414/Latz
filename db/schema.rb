@@ -27,17 +27,6 @@ ActiveRecord::Schema.define(version: 20171117161456) do
   add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
   add_index "answers", ["user_id"], name: "index_answers_on_user_id", using: :btree
 
-  create_table "anwsers", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "question_id"
-    t.string   "content"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "anwsers", ["question_id"], name: "index_anwsers_on_question_id", using: :btree
-  add_index "anwsers", ["user_id"], name: "index_anwsers_on_user_id", using: :btree
-
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
     t.integer  "sluggable_id",              null: false
@@ -69,59 +58,15 @@ ActiveRecord::Schema.define(version: 20171117161456) do
   create_table "quizzes", force: :cascade do |t|
     t.string   "name"
     t.integer  "number_of_questions"
-    t.boolean  "is_zip"
+    t.boolean  "is_zip",              default: false
     t.integer  "user_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "slug"
   end
 
   add_index "quizzes", ["slug"], name: "index_quizzes_on_slug", unique: true, using: :btree
   add_index "quizzes", ["user_id"], name: "index_quizzes_on_user_id", using: :btree
-
-  create_table "rapidfire_answers", force: :cascade do |t|
-    t.integer  "attempt_id"
-    t.integer  "question_id"
-    t.text     "answer_text"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "rapidfire_answers", ["attempt_id"], name: "index_rapidfire_answers_on_attempt_id", using: :btree
-  add_index "rapidfire_answers", ["question_id"], name: "index_rapidfire_answers_on_question_id", using: :btree
-
-  create_table "rapidfire_attempts", force: :cascade do |t|
-    t.integer  "survey_id"
-    t.integer  "user_id"
-    t.string   "user_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "rapidfire_attempts", ["survey_id"], name: "index_rapidfire_attempts_on_survey_id", using: :btree
-  add_index "rapidfire_attempts", ["user_id", "user_type"], name: "index_rapidfire_attempts_on_user_id_and_user_type", using: :btree
-
-  create_table "rapidfire_questions", force: :cascade do |t|
-    t.integer  "survey_id"
-    t.string   "type"
-    t.string   "question_text"
-    t.string   "default_text"
-    t.string   "placeholder"
-    t.integer  "position"
-    t.text     "answer_options"
-    t.text     "validation_rules"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "rapidfire_questions", ["survey_id"], name: "index_rapidfire_questions_on_survey_id", using: :btree
-
-  create_table "rapidfire_surveys", force: :cascade do |t|
-    t.string   "name"
-    t.text     "introduction"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "test_answers", force: :cascade do |t|
     t.integer  "test_id"
@@ -165,8 +110,6 @@ ActiveRecord::Schema.define(version: 20171117161456) do
 
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
-  add_foreign_key "anwsers", "questions"
-  add_foreign_key "anwsers", "users"
   add_foreign_key "questions", "quizzes"
   add_foreign_key "questions", "users"
   add_foreign_key "quizzes", "users"
