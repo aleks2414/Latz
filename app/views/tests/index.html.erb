@@ -1,1 +1,42 @@
-index.html.erb
+<div class="col-md-8 col-md-offset-2">
+<div id="formario">
+
+<h1><%= @quiz.name %></h1>
+
+<div class="content table-responsive table-full-width">
+  <table class="table table-hover table-striped">
+  	<thead>
+  		<tr>
+  			<th></th>
+  			<th>Name</th>
+  			<th>email</th>
+  			<th>City</th>
+  			<th>Zip</th>
+  			<th colspan="3"></th>
+  		</tr>
+  	</thead>
+
+  	<tbody>
+  		<% @tests.each_with_index do |test, i| %>
+  		<tr>
+  			<td><%= i+1 %></td>
+  			<td><%= test.name %></td>
+  			<td><%= test.email %></td>
+  			<td><%= test.city %></td>
+  			<td><%= test.zip_code %></td>
+        <td><%= link_to quiz_test_path(@quiz, test) do %>
+          <span class="fa fa-eye rak" aria-hidden="true"></span>
+          <% end %>
+        </td>
+        <td><%= link_to quiz_test_path(@quiz, test), method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <span class="fa fa-trash rak" aria-hidden="true"></span>
+          <% end %>
+        </td>
+  		</tr>
+  		<% end %>
+  	</tbody>
+	</table>
+</div>
+
+</div>
+</div>

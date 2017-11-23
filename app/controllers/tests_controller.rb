@@ -6,7 +6,7 @@ class TestsController < ApplicationController
   # GET /tests
   # GET /tests.json
   def index
-    @tests = Test.all
+    @tests = @quiz.tests
   end
 
   # GET /tests/1
@@ -59,7 +59,7 @@ class TestsController < ApplicationController
   def destroy
     @test.destroy
     respond_to do |format|
-      format.html { redirect_to tests_url, notice: 'Test was successfully destroyed.' }
+      format.html { redirect_to quiz_tests_path(@quiz), notice: 'Test was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

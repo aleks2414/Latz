@@ -16,27 +16,36 @@
 <div class="questions">
 <% @quiz.questions.each_with_index do |question, w| %>
   <div id="formario">
-    <h4><%= question.title %></h4>
+    <h4><%= w+1 %>.- <%= question.title %></h4>
     <div class="row">
-      <div class="col-sm-1 col-xs-3">
-        <div id="magic2">
-          <h1><%= w+1 %></h1>
+
+      <div class="col-sm-4 col-xs-3">
+        <h5>Correct Answer:</h5>
+
+<% @d = @quiz.questions[w].try(:correct_option)+1 == @test.test_answers[w].try(:option) %>
+
+<% if @d == true %>
+        <div id="magic2" class="uno">
+          <h5><%= question.answers[question.correct_option.to_i-1].try(:content) %> SÏ</h5>
         </div>
+<% else %>
+        <div id="magic2" class="dos">
+          <h5><%= question.answers[question.correct_option.to_i-1].try(:content) %> NO</h5>
+        </div>
+<% end %>
+
+
       </div>
 
       <div class="col-sm-4 col-xs-3">
-        <div id="magic2">
-          <h5><%= question.answers[question.correct_option.to_i-1].try(:content) %></h5>
-        </div>
-      </div>
-
-      <div class="col-sm-4 col-xs-3">
+        <h5>Explanation:</h5>
         <div id="magic2">
           <h5><%= question.explanation %></h5>
         </div>
       </div>
 
-      <div class="col-sm-3 col-xs-3">
+      <div class="col-sm-4 col-xs-3">
+        <h5>Recomendated reading:</h5>
         <a href="<%= question.link %>">
           <div id="magic2">
             <h5><%= question.reading %></h5>
@@ -63,12 +72,12 @@
 
 <div class="row">
   <div class="col-sm-6">
-    <div id="magic2">
+    <div id="magic3" class="uno">
       <h5><%= @b %> Correct Answers</h5>
     </div>
   </div>
     <div class="col-sm-6">
-    <div id="magic2">
+    <div id="magic3" class="dos">
       <h5><%= @a - @b %> Wrong Answers</h5>
     </div>
     </div>
@@ -76,7 +85,7 @@
 
   <div class="row">
     <div class="col-sm-12">
-      <div id="magic2">
+      <div id="magic3" class="tres">
         <h5><%= ((@b / @a.to_f)*100).round(2) %> % of Success</h5>
       </div>
     </div>
