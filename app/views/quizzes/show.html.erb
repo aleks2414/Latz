@@ -21,7 +21,7 @@
       <% question.answers.each_with_index do |answer, z| %>
       <div class="col-md-6">
         <div id="magic" class="<%=i%> <%=i%><%=z%>">
-          <%= image_tag "image#{z}.png"%>
+          <%= image_tag "image#{rand(0..14)}.png"%>
         <h4><%= z+1 %></h4>
         <p> <%= answer.content %></p>
         </div>
