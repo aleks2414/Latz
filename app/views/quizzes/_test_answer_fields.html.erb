@@ -1,8 +1,8 @@
 <fieldset>
 <div class="nested-fields">
-  <div class="field">
+  <div class="field hidden">
     <%= f.label :option %><br>
-    <%= f.number_field :option %>
+    <%= f.number_field :option, :readonly => true, id: "option#{i}", required: true %>
   </div>
 </div>
 </fieldset>

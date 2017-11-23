@@ -1,11 +1,45 @@
+<div class="col-sm-6 col-sm-offset-3">
+
 <h1><%= @quiz.name %></h1>
 
 
 
-<div class="row">
-  <div class="col-sm-5">
-  <div id="formario">
+  
 <%= form_for([@quiz, @test]) do |f| %>   
+    <div id="formario">
+
+<div class="questions">
+<% @quiz.questions.each_with_index do |question, i| %>
+
+
+
+<div id="jaro2">
+    <h3><strong><%= i+1 %>.-</strong> <%= question.title %></h3>
+
+    <div class="answers">
+      <div class="row">
+      <% question.answers.each_with_index do |answer, z| %>
+      <div class="col-md-6">
+        <div id="magic" class="<%=i%> <%=i%><%=z%>">
+          <%= image_tag "image#{z}.png"%>
+        <h4><%= z+1 %></h4>
+        <p> <%= answer.content %></p>
+        </div>
+      </div>
+      <% end %>
+      </div>
+    </div>
+<%= f.fields_for :test_answers do |builder| %>
+  <%= render 'test_answer_fields', f: builder, i: i %>
+<% end %>
+</div>
+  
+<% end %>
+</div>  
+
+    </div>
+
+<div id="formario">
 
     <div class="field">
     <%= f.label :name %><br>
@@ -38,56 +72,32 @@
   </div>
   <% end %>
   </div>
+
+  <div class="actions">
+    <%= f.submit class: "button button_red button_block" %>
+  </div>
+
+
   <% if current_user %>
 <%= link_to 'Edit', edit_quiz_path(@quiz) %> |
 <%= link_to 'Back', quizzes_path %>
 <% end %>
 </div>
 
-  </div>
-  <div class="col-sm-7">
-    <div id="formario">
-
-<div class="questions">
-<% @quiz.questions.each_with_index do |question, i| %>
-
-
-
-<div id="jaro2">
-    <h3><strong><%= i+1 %>.-</strong> <%= question.title %></h3>
-
-    <div class="answers">
-      <div class="row">
-      <% question.answers.each_with_index do |answer, i| %>
-      <div class="col-md-6">
-        <div id="magic">
-          <%= image_tag "image#{i}.png"%>
-        <h4><%= i+1 %></h4>
-        <p> <%= answer.content %></p>
-        </div>
-      </div>
-      <% end %>
-      </div>
-    </div>
-<%= f.fields_for :test_answers do |builder| %>
-  <%= render 'test_answer_fields', f: builder %>
-<% end %>
-</div>
-  
-<% end %>
-</div>
-
-  <div class="actions">
-    <%= f.submit class: "button button_red button_block" %>
-  </div>
-  
-
-    </div>
-  </div>
-</div>
 
 <% end %>
+
+</div>
+
 
 <script>
-
+<% @quiz.questions.each_with_index do |question, i| %>
+  <% question.answers.each_with_index do |answer, z| %>
+  $( ".<%=i%><%=z%>" ).click(function() {
+  document.getElementById('option<%=i%>').value = <%=z%>;
+  $('.<%=i%>').removeClass('active');
+  $(this).addClass('active');
+});
+  <% end %>
+<% end %>
 </script>

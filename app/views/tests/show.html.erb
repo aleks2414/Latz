@@ -22,15 +22,15 @@
       <div class="col-sm-4 col-xs-3">
         <h5>Correct Answer:</h5>
 
-<% @d = @quiz.questions[w].try(:correct_option)+1 == @test.test_answers[w].try(:option) %>
+<% @d = @quiz.questions[w].try(:correct_option) == @test.test_answers[w].try(:option) %>
 
 <% if @d == true %>
         <div id="magic2" class="uno">
-          <h5><%= question.answers[question.correct_option.to_i-1].try(:content) %> SÏ</h5>
+          <h5><%= question.answers[question.correct_option.to_i-1].try(:content) %></h5>
         </div>
 <% else %>
         <div id="magic2" class="dos">
-          <h5><%= question.answers[question.correct_option.to_i-1].try(:content) %> NO</h5>
+          <h5><%= question.answers[question.correct_option.to_i-1].try(:content) %></h5>
         </div>
 <% end %>
 
@@ -64,7 +64,7 @@
 <div id="formario">
 
 <% @quiz.questions.each_with_index do |a, i| %>
-<% @c = @quiz.questions[i].try(:correct_option)+1 == @test.test_answers[i].try(:option) %>
+<% @c = @quiz.questions[i].try(:correct_option) == @test.test_answers[i].try(:option) %>
 <% if @c == true %>
   <% @b = @b +1 %>
 <% end %>

@@ -294,7 +294,12 @@ h4 {
     margin-top: 5px;
     color: white;
   }
+  &:hover{
+    border: solid 2.5px red;
+  }
 }
+
+
 
 }
 }
@@ -311,5 +316,5 @@ h4 {
 }
 
 .active {
-    background-color: yellow;
+    background-color: #0f835f;
 }
