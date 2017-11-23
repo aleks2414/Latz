@@ -12,6 +12,7 @@
       <th></th>
       <th>Quiz name</th>
       <th>Quiz Link</th>
+      <th>Answered Quizzes</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -26,6 +27,12 @@
         <%= link_to quiz do %>
         <%= url_for(quiz)%>
         <% end %>
+        </td>
+
+        <td>
+          <%= link_to quiz_tests_path(quiz) do %>
+          <%= quiz.tests.count %> people answered
+          <% end %>
         </td>
         
         <td><%= link_to quiz do %>

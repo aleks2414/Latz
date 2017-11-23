@@ -24,15 +24,19 @@
 	<div class="container">
 	<ul>
 		<% if user_signed_in? %>
-  <li>
-    <%= link_to "Home", root_path %>
-  </li>
+		<li>
+			<%= link_to root_path do %>
+			<%= image_tag "logo.png" %>
+				<% end %>
+			</li>
 		<li><a href="<%= destroy_user_session_path %>" data-method='delete'>
  Sign out
  </a></li>
 		<% else %>
+		<li>
+			<%= image_tag "logo.png" %>
+			</li>
 	<li><a href="<%= new_user_session_path %>"> Login </a></li>
-	<li><a href="<%= new_user_registration_path %>"> Sign up </a></li>
 		<% end %>
 	</ul>
 	</div>

@@ -3,4 +3,7 @@ class Quiz < ActiveRecord::Base
   has_many :questions, :dependent => :destroy
   has_many :tests, :dependent => :destroy
   accepts_nested_attributes_for :questions, :reject_if => lambda { |a| a[:title].blank? }, :allow_destroy => true
+
+  extend FriendlyId
+  friendly_id :name, use: :slugged
 end

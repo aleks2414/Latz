@@ -55,7 +55,7 @@
 <div id="formario">
 
 <% @quiz.questions.each_with_index do |a, i| %>
-<% @c = @quiz.questions[i].try(:correct_option) == @test.test_answers[i].try(:option) %>
+<% @c = @quiz.questions[i].try(:correct_option)+1 == @test.test_answers[i].try(:option) %>
 <% if @c == true %>
   <% @b = @b +1 %>
 <% end %>
