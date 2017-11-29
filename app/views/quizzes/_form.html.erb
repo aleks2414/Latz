@@ -42,9 +42,6 @@
 <%= f.fields_for :questions do |builder| %>
   <%= render 'question_fields', f: builder %>
 <% end %>
-  <%= link_to_add_association f, :questions, class: "fa_add" do %>
-    <span class="fa fa-plus-circle" data-toggle="tooltip" data-placement="right" title="Add Question!"></span>
-  <% end %>
 </div>
 </div>
       

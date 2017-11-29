@@ -1,12 +1,8 @@
 <div class="nested-fields">
 <div id="formario">
 
-<%= link_to_remove_association f, class: "fa_nice" do%>
-<span class="fa fa-times" data-toggle="tooltip" data-placement="right" title="Add Question!"></span>
-<% end %>
-
 <div id="q1">
-<section><%= f.label :Question, class:'info col-form-label'%></section>
+<section><%= @x= f.label :Question, class:'info col-form-label'%></section>
 </div>
 
   <div class="field">
@@ -43,9 +39,6 @@
   <%= f.fields_for :answers do |builder| %>
   
     <%= render 'answer_fields', f: builder %>
-  <% end %>
-  <%= link_to_add_association f, :answers, class: "fa_new" do %>
-    <h1><span class="fa fa-plus"></span> New Answer</h1>
   <% end %>
 </div>
 </div>
