@@ -93,6 +93,11 @@ a {
 
 }
 
+.button_dis {
+  color: white !important;
+  background-color: #c6c6c6;
+  border: solid 1.2px #c6c6c6;
+}
 
 
 .button_block {
@@ -246,19 +251,33 @@ input[type="checkbox"] {
 }
 
   .uno {
-    background-color: #2a882a !important;
+    background-color: #4CAF50 !important;
     h5 {
       color: white !important;
     }
   }
   .dos {
-    background-color: #d72323 !important;
+    background-color: #D32F2F !important;
     h5 {
       color: white !important;
     }
   }
   .tres {
-    background-color: #303030 !important;
+    background-color: #607D8B !important;
+    h5 {
+      color: white !important;
+    }
+  }
+
+  .cuatro {
+    background-color: #1976D2 !important;
+    h5 {
+      color: white !important;
+    }
+  }
+
+  .cinco {
+    background-color: #FFA000 !important;
     h5 {
       color: white !important;
     }
@@ -293,7 +312,7 @@ h4 {
   padding: 1.5%;
   border: solid 1.5px white;
   cursor: pointer;
-  height: 330px;
+  height: 300px;
   p {
     margin-top: 5px;
     color: white;
@@ -359,4 +378,12 @@ div.tab button.active {
 .tabcontent {
     display: none;
     border-top: none;
+}
+
+#button {
+ display: none;   
+}
+
+.white {
+  color: white;
 }

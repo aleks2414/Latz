@@ -1,7 +1,7 @@
 <div class="col-sm-6 col-sm-offset-3">
 
 <h1><%= @quiz.name %></h1>
-<p><%= @quiz.questions.count %> questions</p>
+<p class="white"><%= @quiz.questions.count %> questions</p>
 
 
 <div class="tab">
@@ -21,7 +21,7 @@
 
     <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name, required: true %>
+    <%= f.text_field :name, required: true, id: "inputName" %>
   </div>
 
 <div class="row">
@@ -29,7 +29,7 @@
     <div class="col-md-4">
     <div class="field">
     <%= f.label :email %><br>
-    <%= f.text_field :email, required: true %>
+    <%= f.text_field :email, required: true, id: "inputEmail" %>
   </div>
   </div>
 
@@ -37,7 +37,7 @@
     <div class="col-md-4">
     <div class="field">
     <%= f.label :city %><br>
-    <%= f.text_field :city, required: true %>
+    <%= f.text_field :city, required: true, id: "inputCity" %>
   </div>
   </div>
 
@@ -51,7 +51,8 @@
   <% end %>
   </div>
 
-<button class="tablinks button button_red button_next" onclick="openCity(event, 'Option0')">Next</button>
+<button id= "button" class="tablinks button button_red button_next" onclick="openCity(event, 'Option0')">Next</button>
+<button id="button1" class="button button_dis">Next</button>
 
 
 <div class="container">
@@ -93,7 +94,6 @@
 
 <% if i == 0 %>
 
-<button class="tablinks button button_red button_next" onclick="openCity(event, 'London')">Previous</button>
 <button class="tablinks button button_red button_next" onclick="openCity(event, 'Option<%=i+1%>')">Next</button>
 
 <% elsif i+1 == @quiz.questions.count %>
@@ -124,6 +124,19 @@
 
 
 
+
+<script>
+      $("#inputName").keyup && $("#inputEmail").keyup && $("#inputCity").keyup(function () {
+       if ($(this).val()) {
+          $("#button").show();
+          $("#button1").hide();
+       }
+       else {
+          $("#button").hide();
+          $("#button1").show();
+       }
+    });
+</script>
 
 
 <script>
