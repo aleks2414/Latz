@@ -30,6 +30,13 @@ background-size: cover;
 background-position: center center;
 }
 
+.black {
+background-image: image-url("black.png");
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center center;
+}
+
 a {
   color: $red;
   text-decoration: none;
@@ -155,7 +162,15 @@ section label:after {
 #content {
   width: 100%;
   overflow: hidden;
-  padding: 0 2%;
+  padding: 0 2% 3% 2%;
+}
+
+.iglu {
+  background-color: #207EBD !important;
+}
+
+.mayor {
+  text-transform: uppercase;
 }
 
 
@@ -173,7 +188,56 @@ section label:after {
     font-size: 1.5em !important;
   }
 
+.rebus {
+font-size: 19px;
+color: #FFFFFF;
+letter-spacing: 7px;
+text-transform: uppercase;
+font-weight: 400;
+}
 
+.exp {
+  margin-top: 15px;
+  /* While there is no co: */
+}
+
+.circlin {
+  width: 100px;
+  margin-left: 25%;
+}
+
+#sin {
+  text-align: center;
+  border: solid 2px white;
+  padding: 9px 12px;
+  margin-bottom: 20px;
+  cursor: pointer;
+
+  &:hover {
+    border: solid 2px $red;
+  }
+
+  h5 {
+font-size: 15px;
+color: #FFFFFF;
+letter-spacing: 3px;
+  }
+}
+
+.confi {
+font-size: 13px;
+color: #FFFFFF;
+letter-spacing: 0;
+}
+
+.list {
+  width: 70px;
+  position: absolute;
+}
+
+.rup {
+  margin-left: 100px;
+}
 
   .select {
     font-size: 12px;
@@ -271,15 +335,15 @@ input[type="checkbox"] {
 }
 
   .uno {
-    background-color: #4CAF50 !important;
+    border:solid 4px #4CAF50 !important;
     h5 {
-      color: white !important;
+      color: #4CAF50 !important;
     }
   }
   .dos {
-    background-color: #D32F2F !important;
+    border: solid 4px #5f1111 !important;
     h5 {
-      color: white !important;
+      color: #5f1111 !important;
     }
   }
   .tres {

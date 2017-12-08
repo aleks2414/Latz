@@ -12,6 +12,7 @@ class TestsController < ApplicationController
   # GET /tests/1
   # GET /tests/1.json
   def show
+    render layout: "test"
   end
 
   # GET /tests/new

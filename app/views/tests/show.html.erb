@@ -3,57 +3,59 @@
 
 <div class="col-sm-8 col-md-offset-2">
 
-<div id="formario">
-
-<h1><%= @quiz.name %></h1>
-  <h5> <%= @test.name %> </h5>
-  <h5> <%= @test.email %></h5>
-  <h5><%= @test.city %></h5>
-</div>
-
-
 
 <div class="questions">
 <% @quiz.questions.each_with_index do |question, w| %>
-  <div id="formario">
-    <h4><%= w+1 %>.- <%= question.title %></h4>
-    <div class="row">
 
-      <div class="col-sm-4 col-xs-3">
-        <h5>Correct Answer:</h5>
+<div id="formario">
+  <div class="row">
+    <div class="col-md-4">
 
 <% @d = @quiz.questions[w].try(:correct_option) == @test.test_answers[w].try(:option) %>
 
 <% if @d == true %>
-        <div id="magic2" class="uno">
-          <h5><%= question.answers[question.correct_option.to_i-1].try(:content) %></h5>
-        </div>
+  <%= image_tag "check.svg", class: "circlin" %>
 <% else %>
-        <div id="magic2" class="dos">
-          <h5><%= question.answers[question.correct_option.to_i-1].try(:content) %></h5>
-        </div>
+  <%= image_tag "no.svg", class: "circlin" %>
 <% end %>
+      
+    </div>
+    <div class="col-md-8">
+      <h3 class="white rebus">Results</h3>
+      <p class="white exp">
+        <%= question.explanation %>
+      </p>
+    </div>
+  </div>
+</div>
 
-
-      </div>
-
-      <div class="col-sm-4 col-xs-3">
-        <h5>Explanation:</h5>
-        <div id="magic2" class="cuatro">
-          <h5><%= question.explanation %></h5>
-        </div>
-      </div>
-
-      <div class="col-sm-4 col-xs-3">
-        <h5>Recomendated reading:</h5>
+<div id="formario" class="iglu">
+  <div class="row">
+    <div class="col-md-6">
+      <div id="sin">
         <a href="<%= question.link %>">
-          <div id="magic2" class="cinco">
-            <h5><%= question.reading %></h5>
-          </div>    
+          <h5><%= question.reading %></h5>   
         </a>
       </div>
     </div>
+    <div class="col-md-6">
+      <p class="confi">Want to learn how to become a more  confident negotiator</p>
+    </div>
   </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div id="formario">
+      <%= image_tag "list.svg", class: "list" %>
+      <h1 class="white rup"><%=w+1%> of <%= @quiz.questions.count %></h1>
+    </div>
+  </div>
+  <div class="col-md-6">
+
+  </div>
+</div>
+<br><br>
 <% end %>
 
 
