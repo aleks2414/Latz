@@ -35,6 +35,7 @@ background-image: image-url("black.png");
 background-repeat: no-repeat;
 background-size: cover;
 background-position: center center;
+height: 100vh;
 }
 
 a {
@@ -51,10 +52,11 @@ a {
 
   .button {
   transition: background-color .15s linear;
-  font-size: 15px;
-  min-width: 150px;
+  font-size: 12px;
+  min-width: 120px;
   border-radius: 0px;
-  padding: 13px 7px;
+  padding: 7px 7px;
+  border-radius: 15px;
   text-transform: uppercase;
   display: inline-block;
   text-align: center;
@@ -127,7 +129,8 @@ a {
 }
 
 #links {
-  margin-top: 30px;
+  /*border-bottom: solid 5px #eaeaea;*/
+  padding: 15px;
 	ul {
 		list-style: none;
 		margin-left: 0;
@@ -136,7 +139,7 @@ a {
 			display: inline;
 			margin-right: 25px;
 			a {
-				color: white;
+				color: #555;
 				text-transform: uppercase;
 				&:hover {
 					color: $blue;
@@ -175,11 +178,12 @@ section label:after {
 
 
 #formario {
-  background-color: rgba(234, 237, 242, .2);
-  border-radius: 4px;
+  padding: 10px;
+  margin: 1% 1% 1% 1%;
+.negro {
+  border: solid 1px $red;
   padding: 30px;
-  margin: 1% 1% 3% 1%;
-
+}
   h1 {
     text-transform: uppercase;
     font-size: 2em;
@@ -190,7 +194,7 @@ section label:after {
 
 .rebus {
 font-size: 19px;
-color: #FFFFFF;
+color: $red;
 letter-spacing: 7px;
 text-transform: uppercase;
 font-weight: 400;
@@ -198,12 +202,48 @@ font-weight: 400;
 
 .exp {
   margin-top: 15px;
+  color: $red;
   /* While there is no co: */
 }
 
 .circlin {
   width: 100px;
   margin-left: 25%;
+}
+
+#compro {
+  background-color: $red;
+  text-align: center;
+  text-transform: uppercase;
+  color: white;
+  padding: 30px;
+  margin-left: 40px;
+}
+
+#vendo {
+  border: solid 1px $red;
+  height: 150px;
+  margin-top: 44px;
+  padding: 15px;
+  margin-right: 80px;
+  h5 {
+    text-transform: uppercase;
+  }
+  p {
+    color: #176f98;
+  }
+}
+
+#circle {
+  background-color: white;
+  border: solid 4px $red; 
+  position: absolute;
+  width: 85px;
+  height: 85px;
+  text-align: center;
+  border-radius: 50%;
+  margin-top: -150px;
+  color: $red;
 }
 
 #sin {
@@ -226,7 +266,6 @@ letter-spacing: 3px;
 
 .confi {
 font-size: 13px;
-color: #FFFFFF;
 letter-spacing: 0;
 }
 
@@ -241,11 +280,15 @@ letter-spacing: 0;
 
   .select {
     font-size: 12px;
-    color: #FFFFFF;
-    letter-spacing: 6px;
+    padding: 5px 7px;
+    border: solid 1px #555;
+    color: $red;
+    letter-spacing: 1px;
     text-transform: uppercase;
     text-align: center;
     font-weight: 400;
+    display: block;
+    margin: 20px 0;
   }
 
 input[type="url"], input[type="date"],input[type="name"], input[type="email"], input[type="textbox"], input[type="number"], input[type="tel"], input[type="text"], input[type="password"], textarea, select {
@@ -273,7 +316,7 @@ input[type="checkbox"] {
   text-align: center;
   text-transform: uppercase;
   font-size: 12px;
-  color: white;
+  color: #555;
 }
 
 #q1 {
@@ -370,18 +413,22 @@ input[type="checkbox"] {
 #jaro2 {
   padding: 1.5%;
   margin-bottom: 0px;
+  .conta {
+    padding: 0 7%;
+  }
+
   h3 {
-    font-size: 15.5px;
-    color: #FFFFFF;
+    font-size: 17px;
+    color: $red;
     letter-spacing: 0;
-    margin-left: 90px;
-    margin-top: -53px;
+    margin-left: 100px;
+    margin-top: -49px;
   }
 
   h2 {
-    color: white;
-    margin-left: 28px;
-    margin-top: 23px;
+    color: $red;
+    margin-left: 60px;
+    margin-top: 25px;
   }
 img {
   width: 100%;
@@ -389,7 +436,7 @@ img {
 }
 
 .brief {
-  width: 80px;
+  width: 40px;
   position: absolute;
 }
 
@@ -400,29 +447,31 @@ h4 {
   color: white;
 }
 #magic {
-  border-radius: 4px;
   margin-bottom: 20px;
   border: solid 2.5px white;
   cursor: pointer;
-  height: 150px;
+  height: 250px;
   background-repeat: no-repeat !important;
   background-size: cover !important;
   background-position: center center !important;
 
 #fondo {
   background-color: white;
-  height: 50px;
-  margin-top: 94.5px;
+  height: 100px;
+  margin-top: 144.5px;
   position: relative;
   margin-right: 0.5px;
   margin-left: 0.5px;
   padding: 9px;
   opacity: 0.9;
+  -webkit-box-shadow: 6px 6px 2px rgba(46,133,155,0.04);
+  box-shadow: 6px 6px 2px rgba(46,133,155,0.04);
 }
 
   p {
     color: #676563;
     font-size: 10px;
+    text-align: center;
   }
   &:hover{
     border: solid 2.5px #094B7B;

@@ -1,8 +1,4 @@
-<div class="col-sm-6 col-sm-offset-3">
-
-<h1 class="mayor"><%= @quiz.name %></h1>
-<p class="white"><%= @quiz.questions.count %> questions</p>
-
+<div class="col-sm-8 col-sm-offset-2">
 
 <div class="tab">
   <button class="tablinks hidden" onclick="openCity(event, 'London')" id="defaultOpen">London</button>
@@ -51,20 +47,12 @@
   <% end %>
   </div>
 
-
-
-
-<div class="container">
-<% if current_user %>
-<%= link_to 'Edit', edit_quiz_path(@quiz) %>
-<% end %>
-</div>
 </div>
 
 <!-- botones -->
 
 <div id="botones_centro">
-<button id= "button" class="tablinks button button_red button_next" onclick="openCity(event, 'Option0')">Next ></button>
+<button id= "button" class="tablinks button button_red button_next" onclick="openCity(event, 'Option0')">Next</button>
 <button id="button1" class="button button_dis">Next</button>
 </div>
 
@@ -79,15 +67,23 @@
 <div id="Option<%=i%>" class="tabcontent">
 <div id="formario">
 <div id="jaro2">
-    
+   
+   <div class="conta">
     <%= image_tag "brief.png", class: "brief" %>
     <h2><%= i+1 %>.</h2>
     <h3><%= question.title %></h3>
-      <br><br>
+  </div> 
+
     <div class="answers">
       <div class="row">
+      <div class="col-sm-4 col-sm-offset-4">
+      <h6 class="select">Select one option</h6>
+      </div>
+      </div>
+      <div class="row">
+        
       <% question.answers.each_with_index do |answer, z| %>
-      <div class="col-md-6">
+      <div class="col-md-3">
         <div id="magic" class="<%=i%> <%=i%><%=z%>" style= "background:url('/assets/image<%=rand(0..14)%>.png');">
           <%#= image_tag "image#{rand(0..14)}.png"%>
         
@@ -106,7 +102,7 @@
 <% end %>
 </div>
 
-<h4 class="select">Select one option</h4>
+
 
 </div>
 

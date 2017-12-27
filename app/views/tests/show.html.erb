@@ -3,11 +3,21 @@
 
 <div class="col-sm-8 col-md-offset-2">
 
+<div class="tab">
+
+<button class="tablinks hidden" onclick="openCity(event, 'Option0')" id="defaultOpen">Option0</button>
+
+<% @quiz.questions.each_with_index do |question, i| %>  
+  <button class="tablinks hidden" onclick="openCity(event, 'Option<%=i%>')">Option <%=i%></button>
+<% end %>
+</div>
+
 
 <div class="questions">
 <% @quiz.questions.each_with_index do |question, w| %>
-
+<div id="Option<%=w%>" class="tabcontent">
 <div id="formario">
+  <div class="negro">
   <div class="row">
     <div class="col-md-4">
 
@@ -21,41 +31,67 @@
       
     </div>
     <div class="col-md-8">
-      <h3 class="white rebus">Results</h3>
-      <p class="white exp">
+<% if @d == true %>
+  <h3 class="rebus">Correct!</h3>
+<% else %>
+  <h3 class="rebus">Incorrect!</h3>
+<% end %>      
+      <p class="exp">
         <%= question.explanation %>
       </p>
     </div>
+    </div>
   </div>
 </div>
 
-<div id="formario" class="iglu">
+<div id="formario">
   <div class="row">
     <div class="col-md-6">
-      <div id="sin">
+      <div id="compro">
+        <h2>Question <br> Answered</h2>
+        <%= image_tag "medal.png" %>
+      </div>
+      <div id="circle">
+        <h2><%=w+1%>/<%= @quiz.questions.count %></h2>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div id="vendo">
         <a href="<%= question.link %>">
-          <h5><%= question.reading %></h5>   
+          <h5><%= question.reading %></h5>
+          <p class="confi">Want to learn how to become a more  confident negotiator</p>  
         </a>
       </div>
     </div>
-    <div class="col-md-6">
-      <p class="confi">Want to learn how to become a more  confident negotiator</p>
-    </div>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-6">
-    <div id="formario">
-      <%= image_tag "list.svg", class: "list" %>
-      <h1 class="white rup"><%=w+1%> of <%= @quiz.questions.count %></h1>
-    </div>
-  </div>
-  <div class="col-md-6">
 
-  </div>
-</div>
 <br><br>
+
+<!-- botnr -->
+
+<div id="botones_centro">
+  
+<% if w == 0 %>
+
+<button class="tablinks button button_red button_next" onclick="openCity(event, 'Option<%=w+1%>')">Next</button>
+
+<% elsif w+1 == @quiz.questions.count %>
+<button class="tablinks button button_red button_next" onclick="openCity(event, 'Option<%=w-1%>')">Previous</button>
+
+<% elsif %>
+<button class="tablinks button button_red button_next" onclick="openCity(event, 'Option<%=w-1%>')">Previous</button>
+<button class="tablinks button button_red button_next" onclick="openCity(event, 'Option<%=w+1%>')">Next</button>
+
+<% end %>
+
+</div>
+
+<!-- fin de -->
+
+
+</div>
 <% end %>
 
 
@@ -63,33 +99,7 @@
 
 
 
-<div id="formario">
 
-<% @quiz.questions.each_with_index do |a, i| %>
-<% @c = @quiz.questions[i].try(:correct_option) == @test.test_answers[i].try(:option) %>
-<% if @c == true %>
-  <% @b = @b +1 %>
-<% end %>
-<% end %>
-
-<div class="row">
-  <div class="col-sm-6">
-    <div id="magic3" class="uno">
-      <h5><%= @b %> Correct Answers</h5>
-    </div>
-  </div>
-    <div class="col-sm-6">
-    <div id="magic3" class="dos">
-      <h5><%= @a - @b %> Wrong Answers</h5>
-    </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-sm-12">
-      <div id="magic3" class="tres">
-        <h5><%= ((@b / @a.to_f)*100).round(2) %> % of Success</h5>
-      </div>
     </div>
   </div>
 </div>
@@ -99,3 +109,22 @@
 </div>
 
 
+
+<script>
+function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
